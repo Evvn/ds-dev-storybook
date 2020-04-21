@@ -3,33 +3,33 @@ import { create } from "@storybook/theming";
 export default create({
   base: "dark",
 
-  colorPrimary: "#FEAFFF",
-  colorSecondary: "#2C3765",
+  colorPrimary: "#d83d03",
+  colorSecondary: "#d83d03",
 
   // UI
-  appBg: "#1A1C23",
+  appBg: "#252525",
   appContentBg: "#fff",
   appBorderColor: "#fff",
-  appBorderRadius: 0,
+  appBorderRadius: 3,
 
   // Typography
-  fontBase: '"Helvetica", "Open Sans", sans-serif',
+  fontBase: '"Muli", "Open Sans", sans-serif',
   fontCode: "monospace",
 
   // Text colors
-  textColor: "#797B8D",
+  textColor: "#eeeeee",
   textInverseColor: "rgba(255,255,255,0.9)",
 
   // Toolbar default and active colors
   barTextColor: "#fff",
-  barSelectedColor: "#FEAFFF",
-  barBg: "#1A1C23",
+  barSelectedColor: "#d83d03",
+  barBg: "#252525",
 
   // Form colors
   inputBg: "cyan",
   inputBorder: "#fff",
-  inputTextColor: "#797B8D",
-  inputBorderRadius: 0,
+  inputTextColor: "#eeeeee",
+  inputBorderRadius: 3,
 
-  brandTitle: "e v a n"
+  brandTitle: "Vault Design System",
 });
