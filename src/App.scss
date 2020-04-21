@@ -1,0 +1,105 @@
+// dsm SCSS import
+@import "./_dsmStyles.scss";
+
+* {
+  box-sizing: border-box;
+  font-family: sans-serif;
+  @include font-body-1;
+}
+
+// font styles
+h1 {
+  @include font-h-1;
+}
+
+h2 {
+  @include font-h-2;
+}
+
+h3 {
+  @include font-h-3;
+}
+
+h4 {
+  @include font-h-4;
+}
+
+h5 {
+  @include font-h-5;
+}
+
+.font-subtitle-1 {
+  @include font-subtitle-1;
+}
+
+.font-subtitle-2 {
+  @include font-subtitle-2;
+}
+
+.font-body-1 {
+  @include font-body-1;
+}
+
+.font-body-2 {
+  @include font-body-2;
+}
+
+.font-caption-1 {
+  @include font-caption-1;
+}
+
+.font-caption-2 {
+  @include font-caption-2;
+}
+
+// component style mix ins
+button {
+  @include font-button-text;
+}
+
+input,
+select {
+  @include font-body-1;
+}
+
+.fillTurmericAttentionWarning {
+  path {
+    fill: $color-turmeric-attention-warning !important;
+    color: $color-turmeric-attention-warning !important;
+  }
+}
+
+.fillJuniperInformation {
+  path {
+    fill: $color-juniper-information !important;
+    color: $color-juniper-information !important;
+  }
+}
+
+.fillMintSuccess {
+  path {
+    fill: $color-mint-success !important;
+    color: $color-mint-success !important;
+  }
+}
+
+.fillCayenneAlertTermination {
+  path {
+    fill: $color-cayenne-alert-termination !important;
+    color: $color-cayenne-alert-termination !important;
+  }
+}
+
+.fillPeppercorn {
+  path {
+    fill: $color-peppercorn !important;
+    color: $color-peppercorn !important;
+  }
+}
+
+.fillWhite {
+  path {
+    fill: #ffffff !important;
+    color: #ffffff !important;
+  }
+}

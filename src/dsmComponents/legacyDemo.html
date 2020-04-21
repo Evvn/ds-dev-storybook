@@ -1,0 +1,247 @@
+<script type="text/javascript">
+    var person = {
+        savefilefield: function (value)
+        {
+            var file_data = $('#file').prop('files')[0];
+            $('#filed').attr("value", file_data.name);
+            $('#filep').hide();
+        }
+    }
+</script>
+<div class="row">
+    <!-- NEW COL START -->
+    <article class="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+        <?php if ($this->solonotice && ($this->edit != 1)) { ?>
+            <p class="alert alert-info" style="margin-bottom: 0px;">
+                <i class="fa fa-info"></i> <?php echo _("You have reached the maximum no of allocated users for Solo. Please contact Vault Support before adding new users."); ?> 
+            </p><br />
+        <?php } ?>
+        <?php if ($this->subsMessage && ($this->edit != 1)) { ?>
+            <div class="alert info-subs" style="margin-bottom: 0px;">     
+                <button class="close" data-dismiss="alert">
+                        ×
+                </button>
+                <i class="info-icon"></i>
+                <div class="title"><?php echo _('User Subscriptions'); ?></div>
+                <div class="message"><?php echo $this->subsMessage; ?></div>
+                
+            </div><br />
+        <?php } ?>
+        <div class="jarviswidget" id="wid-id-6" data-widget-editbutton="false" data-widget-custombutton="false">
+            <header>
+                <span class="widget-icon"> <i class="fa fa-edit"></i> </span>
+                <h2><?php echo ($this->edit == 1) ? _('Update') : _('Add New'); ?> <?php echo _('User'); ?> </h2>
+            </header>
+            <div>
+                <div class="widget-body no-padding">
+                    <form action="/quantum/people/edit/saveperson" method="post" id="people-form" class="smart-form"  enctype="multipart/form-data">
+                        <fieldset>
+                            <section>
+                                <label class="label"><?php echo _('First Name'); ?>*</label>
+                                <label for="fname" class="input">
+                                    <?php
+                                        if ($this->edit == 1 && $this->peoDetails[0]['firstname']) {
+                                            $fname = $this->peoDetails[0]['firstname'];
+                                        } else {
+                                            if ($this->peoDetails[0]['name']) {
+                                                $fname = $this->peoDetails[0]['name'];
+                                            } else {
+                                                $fname = '';
+                                            }
+                                        }
+                                    ?>
+                                    <input type="text" name="fname" id="fname" required value="<?php echo $fname; ?>">
+                                </label>
+                            </section>
+                            <section>
+                                <label class="label"><?php echo _('Last Name'); ?>*</label>
+                                <label for="lname" class="input">
+                                    <input type="text" name="lname" id="lname" required value="<?php if ($this->edit == 1 && $this->peoDetails[0]['lastname']) echo $this->peoDetails[0]['lastname']; ?>">
+                                </label>
+                            </section>
+                            <section>
+                                <label class="label"><?php echo _('Phone'); ?>*</label>
+                                <label for="pphone" class="input">
+                                    <input type="text" name="phone" id="pphone" required value="<?php if ($this->edit == 1 && $this->peoDetails[0]['contactphone']) echo $this->peoDetails[0]['contactphone']; ?>">
+                                </label>
+                                <input type="hidden" name="pphone" id="full_pphone" value="<?php if ($this->edit == 1 && $this->peoDetails[0]['contactphone']) echo $this->peoDetails[0]['contactphone']; ?>">   
+                            </section>
+                            <?php
+                                if ($this->editaudit) {
+                            ?>
+                                    <section>
+                                        <label class="label"><?php echo _('Audit Role'); ?>*</label>
+                                        <label for="auditrole" class="input">
+                                            <select name="auditroleid" id="auditroleid" required class="form-control">
+                                                <option value="99"<?php echo ($this->audit == 'no access') ? ' selected' : ''; ?>><?php echo _("No Access"); ?></option>
+                                                <option value="3"<?php echo ($this->audit == 'user') ? ' selected' : ''; ?>><?php echo _("User"); ?></option>
+                                                <option value="2"<?php echo ($this->audit == 'manager') ? ' selected' : ''; ?>><?php echo _("Manager"); ?></option>
+                                                <option value="1"<?php echo ($this->audit == 'admin') ? ' selected' : ''; ?>><?php echo _("Admin"); ?></option>
+                                            </select>
+                                        </label>
+                                    </section>  
+                            <?php
+                                }
+                                if ($this->editinspect) {
+                            ?>
+                                    <section>
+                                        <label class="label"><?php echo _('Check Role'); ?>*</label>
+                                        <label for="checkrole" class="input">
+                                            <select name="inspectroleid" id="inspectroleid" required class="form-control">
+                                                <option value="99"<?php echo ($this->inspect == 'no access') ? ' selected' : ''; ?>><?php echo _("No Access"); ?></option>
+                                                <option value="3"<?php echo ($this->inspect == 'user') ? ' selected' : ''; ?>><?php echo _("User"); ?></option>
+                                                <option value="2"<?php echo ($this->inspect == 'manager') ? ' selected' : ''; ?>><?php echo _("Manager"); ?></option>
+                                                <option value="1"<?php echo ($this->inspect == 'admin') ? ' selected' : ''; ?>><?php echo _("Admin"); ?></option>
+                                            </select>
+                                        </label>
+                                    </section>   
+                            <?php
+                                }
+                                if ($this->editsolo) {
+                            ?>
+                                    <section>
+                                       <label class="label"><?php echo ($this->editsolo && !$this->editinspect && !$this->editaudit) ? _('Role') : _('Solo Role'); ?>*</label>
+                                       <label for="solorole" class="input">
+                                           <select name="soloroleid" id="soloroleid" required class="form-control">
+                                               <option value="99"<?php echo ($this->solo == 'no access') ? ' selected' : ''; ?>><?php echo _("No Access"); ?></option>
+                                               <option value="5"<?php echo ($this->solo == 'operations manager') ? ' selected' : ''; ?>><?php echo _("Operations Manager"); ?></option>
+                                               <option value="1"<?php echo ($this->solo == 'admin') ? ' selected' : ''; ?>><?php echo _("Admin"); ?></option>
+                                               <option value="6"<?php echo ($this->solo == 'manager of workers') ? ' selected' : ''; ?>><?php echo _("Manager of Workers"); ?></option>  
+                                               <option value="7"<?php echo ($this->solo == 'worker') ? ' selected' : ''; ?>><?php echo _("Worker"); ?></option>  
+                                           </select>
+                                       </label>
+                                    </section>
+                                    <section style="display:<?php echo (!empty($this->solo) && (!in_array($this->solo, array("worker","no access")) || !in_array($this->inspect, array("worker","no access")))) ? "block" : "none"; ?>">
+                                        <label class="label"><?php echo _('Email'); ?>*</label>
+                                        <label id="mand_email_input" for="pemail" class="input">
+                                            <?php if (!empty($this->solo) && (!in_array($this->solo, array("worker","no access")) || !in_array($this->inspect, array("worker","no access")))) { ?>
+                                                <input type="text" name="pemail" id="pemail" required value="<?php echo ($this->edit == 1 && $this->peoDetails[0]['contactemail']) ? $this->peoDetails[0]['contactemail'] : ''; ?>">
+                                            <?php } ?>
+                                        </label>
+                                    </section>  
+                            <?php
+                                }
+                            ?>
+                            <?php if (($this->edit == 1) && !in_array($this->solo, array("no access") && !empty($this->peoDetails[0]['contactemail']))) { ?>
+                                <a class="btn btn-default sendpwdreset" href="javascript:void(0);" style="padding:8px;" <?php echo (empty($this->peoDetails[0]['contactemail'])) ? "disabled" : ""; ?>><?php echo _('Send Password Reset Link'); ?></a><br /><br />
+                            <?php } ?>
+                            <?php if (!empty($this->hasWatch)) { ?>
+                                <section>
+                                    <label class="checkbox">
+                                        <input type="checkbox" name="watchenabled" <?php echo (!empty($this->peoDetails[0]['watchenabled']) || ($this->edit != 1 && ($this->hasWatch['metadata']['solowatch_subscription_state'] == "2"))) ? 'checked="checked"' : ''; ?>>
+                                        <i></i>Enable Solo Watch activation
+                                    </label>
+                                </section>
+                            <?php } ?>
+                            <div class="jarviswidget jarviswidget-color-blueLight" id="wid-id-10" data-widget-colorbutton="false" data-widget-editbutton="false" data-widget-togglebutton="false" data-widget-deletebutton="false" data-widget-fullscreenbutton="false" data-widget-custombutton="false" data-widget-sortable="false">   
+                                <div class="grid-detail-head" style="width:auto; float: none;">
+                                    <div class="widget-body no-padding" style="min-height:auto;">
+                                        <div class="panel-group smart-accordion-default" id="accordion-2">
+                                            <div class="panel panel-default">
+                                                <div class="panel-heading">
+                                                    <h4 class="panel-title"><a data-toggle="collapse" class="<?php echo ($this->edit!=1) ? 'collapsed' : ''; ?>" data-parent="#accordion-2" href="#basic"> <i class="fa fa-fw fa-plus-circle txt-color-green"></i> <i class="fa fa-fw fa-minus-circle txt-color-red"></i><?php echo _("Optional Details"); ?></a></h4>
+                                                </div>
+                                                <div id="basic" class="panel-collapse collapse <?php echo ($this->edit==1) ? 'in' : ''; ?>">
+                                                    <div class="panel-body padding-10" id="basic-panel">
+                                                        <section style="display:<?php echo (!empty($this->solo) && (!in_array($this->solo, array("worker","no access")) || !in_array($this->inspect, array("worker","no access")))) ? "none" : "block"; ?>">
+                                                            <label class="label"><?php echo _('Email'); ?></label>
+                                                            <label id="opt_email_input" for="pemail" class="input">
+                                                                <?php
+                                                                    if (!empty($this->solo) && (in_array($this->solo, array("worker","no access")) || in_array($this->inspect, array("worker","no access"))) || ($this->edit != 1)) {
+                                                                ?>
+                                                                        <input type="text" name="pemail" id="pemail" value="<?php echo ($this->edit == 1 && $this->peoDetails[0]['contactemail']) ? $this->peoDetails[0]['contactemail'] : ''; ?>">
+                                                                <?php
+                                                                    }
+                                                                ?>
+                                                            </label>
+                                                        </section>
+                                                        <section>
+                                                            <label class="label"><?php echo _('Division'); ?></label>
+                                                            <label for="division" class="input">
+                                                                <input type="text" name="division" id="division" value="<?php if ($this->edit == 1 && $this->peoDetails[0]['division']) echo $this->peoDetails[0]['division']; ?>">
+                                                            </label>
+                                                        </section>
+                            <!--                        <section>
+                                                            <label class="label"><?php echo _('User Id'); ?></label>
+                                                            <label for="personid" class="input">
+                                                                <input type="text" name="externalid" id="externalid" value="<?php if ($this->edit == 1 && $this->peoDetails[0]['division']) echo $this->peoDetails[0]['division']; ?>">
+                                                            </label>
+                                                        </section>-->
+                                                        <section>
+                                                            <label class="label"><?php echo _('Job Title'); ?></label>
+                                                            <label for="jobtitle" class="input">
+                                                                <input type="text" name="jobtitle" id="jobtitle" value="<?php if ($this->edit == 1 && $this->peoDetails[0]['designation']) echo $this->peoDetails[0]['designation']; ?>">
+                                                            </label>
+                                                        </section>
+                                                        <section>
+                                                            <label class="label"><?php echo _('Supervisor'); ?></label>
+                                                            <select  name="supervisorid" id="supervisorid" style="width: 100%">  </select> 
+                                                        </section>
+                                                        <?php if ($this->editsolo) { ?>
+                                                            <section>
+                                                                <label class="label"><?php echo _("Upload a Photo"); ?></label>
+                                                                <div class="input input-file">
+                                                                    <span class="button">
+                                                                        <input id="file" name="file" type="file" multiple onchange="person.savefilefield(this.value)"><?php echo _("Browse"); ?>
+                                                                    </span>
+                                                                    <input placeholder="Upload File ( Allowed File Types: jpg,png)" readonly="" value="<?php echo ($this->edit == 1 && $this->file) ? $this->filename : ''; ?>" type="text" name="filed" id="filed">
+                                                                </div>
+                                                            </section>
+                                                            <div class="row">
+                                                                <?php
+                                                                    if ($this->edit == 1 && $this->peoDetails[0]['resourcemasterid']) {
+                                                                ?> 
+                                                                        <p id="filep" class="pull-right"> <span class="button theme-button"><a target="_blank" href="<?php echo '/quantum/people/register/viewfile?file=' . $this->peoDetails[0]['resourcemasterid']; ?>" id="filea" class="btn btn-default theme-button"><?php echo _("View Uploaded File"); ?></a></span></p>
+                                                                <?php
+                                                                    }
+                                                                ?>
+                                                            </div>
+                                                            <section  id="team-sec">
+                                                                <label class="label"><?php echo _('Teams'); ?></label>
+                                                                <select multiple class="select2" name="pteam[]" id="pteam">                                       
+                                                                    <?php
+                                                                        if ($this->teams) {
+                                                                            foreach ($this->teams as $key => $value) { ?>
+                                                                                <option value="<?php echo $value['teamid'] ?>" <?php if ($this->teamSel && in_array($value['teamid'], $this->teamSel)) echo "selected"; ?>><?php echo $value['name'] ?></option>           
+                                                                    <?php
+                                                                            }
+                                                                        }
+                                                                    ?>
+                                                                </select>    
+                                                            </section>
+                                                        <?php } ?>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </fieldset>
+                        <footer>
+                            <?php
+                                if ($this->edit == 1) {
+                            ?>
+                                    <button type="button" id="delete" name="delete" class="btn btn-primary"><?php echo _('Delete'); ?></button>
+                            <?php
+                                }
+                            ?> 
+                            <button type="submit" name="submit" class="btn btn-primary">
+                                <?php echo ($this->edit == 1) ? _('Update') : _('Save'); ?> 
+                            </button>
+                            <button type="reset" name="submit" class="btn btn-default" onclick="window.location.href = '/quantum/people/register'">
+                                <?php echo _('Cancel'); ?>
+                            </button>
+                        </footer>
+                        <input type="hidden" value="" name="editm" id="editm"   />
+                        <input type="hidden" id="personid" value="<?php echo ($this->edit == 1 && $this->peoDetails[0]['personid']) ? $this->peoDetails[0]['personid'] : ''; ?>" name="personid"  />
+                    </form>
+                </div>
+            </div>
+        </div>
+    </article>
+</div>
+<script src="/js/jquery-form.min.js?v=<?php echo $this->uiInitVal['version'];?>"></script>
+<script src="/js/plugin/typeahead/typeahead.min.js?v=<?php echo $this->uiInitVal['version'];?>"></script>
+<script src="/js/plugin/intl-tel-input/js/intlTelInput.js?v=<?php echo $this->uiInitVal['version'];?>"></script>
+<?php include("Quantum/People/create.php");
