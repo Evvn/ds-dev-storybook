@@ -11,16 +11,16 @@ export function* getDsmStyles(action) {
       .get(
         `https://vaultintel.invisionapp.com/dsm-export/vault-intel-dsm/vault-dsm/style-data.json?exportFormat=list&key=ryeijWNWB`
       )
-      .then(response => response);
+      .then((response) => response);
     yield put({
       type: actionTypes.GET_DSM_STYLES_SUCCESS,
-      res
+      res,
     });
   } catch (error) {
     console.log(error);
     yield put({
       type: actionTypes.GET_DSM_STYLES_FAILURE,
-      error
+      error,
     });
   }
 }

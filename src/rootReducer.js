@@ -5,7 +5,7 @@ export const makeRootReducer = () =>
   combineReducers({
     // Add sync reducers here
     // router: connectRouter(history),
-    sb: sbReducer
+    sb: sbReducer,
   });
 
 export default makeRootReducer;

@@ -77,11 +77,11 @@ class Colors extends React.Component {
   }
 }
 
-const mapDispatchToProps = dispatch => bindActionCreators(actions, dispatch);
+const mapDispatchToProps = (dispatch) => bindActionCreators(actions, dispatch);
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   dsmRes: state.sb.dsmRes,
-  isLoading: state.sb.isLoading
+  isLoading: state.sb.isLoading,
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Colors);
