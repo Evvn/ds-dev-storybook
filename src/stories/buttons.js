@@ -3,10 +3,16 @@ import { storiesOf } from "@storybook/react";
 import "../../src/App.scss";
 import styled from "styled-components";
 
-import LinkButton from "../dsmComponents/Buttons/LinkButton";
-import PrimaryButton from "../dsmComponents/Buttons/PrimaryButton";
-import GhostButton from "../dsmComponents/Buttons/GhostButton";
-import DeleteButton from "../dsmComponents/Buttons/DeleteButton";
+// DELETE THIS
+// import LinkButton from "../dsmComponents/Buttons/LinkButton";
+// import PrimaryButton from "../dsmComponents/Buttons/PrimaryButton";
+// import GhostButton from "../dsmComponents/Buttons/GhostButton";
+// import DeleteButton from "../dsmComponents/Buttons/DeleteButton";
+
+import LinkButton from "vault-dsm/dist/Buttons/LinkButton";
+import PrimaryButton from "vault-dsm/dist/Buttons/PrimaryButton";
+import GhostButton from "vault-dsm/dist/Buttons/GhostButton";
+import DeleteButton from "vault-dsm/dist/Buttons/DeleteButton";
 
 const Components = styled.div`
   & > * {
@@ -25,7 +31,7 @@ export const Buttons = () => {
         </Components>
       ),
       {
-        "in-dsm": { id: "5db91c9fecbfa474cbaecd64" }
+        "in-dsm": { id: "5db91c9fecbfa474cbaecd64" },
       }
     )
     .add(
@@ -43,7 +49,7 @@ export const Buttons = () => {
         </Components>
       ),
       {
-        "in-dsm": { id: "5db91cedd99993f9cce3247b" }
+        "in-dsm": { id: "5db91cedd99993f9cce3247b" },
       }
     )
     .add(
@@ -55,7 +61,7 @@ export const Buttons = () => {
         </Components>
       ),
       {
-        "in-dsm": { id: "5db91d0b09c87ddb5c66f9ef" }
+        "in-dsm": { id: "5db91d0b09c87ddb5c66f9ef" },
       }
     )
     .add(
@@ -67,7 +73,7 @@ export const Buttons = () => {
         </Components>
       ),
       {
-        "in-dsm": { id: "5db91d37475508a183f5f042" }
+        "in-dsm": { id: "5db91d37475508a183f5f042" },
       }
     );
 };

@@ -4,6 +4,7 @@ import styled from "styled-components";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import * as actions from "../stories/actions/actions.js";
+import { withTheme } from "styled-components";
 
 const Container = styled.div`
   font-family: sans-serif;
@@ -44,7 +45,20 @@ class Colors extends React.Component {
   }
 
   render() {
-    const { isLoading, dsmRes } = this.props;
+    const { isLoading, dsmRes, theme } = this.props;
+
+    let allColors = [];
+    console.log("quack");
+    console.log(
+      Object.keys(theme).forEach((themePropKey) => {
+        let colorObj = {};
+        colorObj[themePropKey] = theme[themePropKey];
+        themePropKey.slice(0, 5) === "color" && allColors.push(colorObj);
+      })
+    );
+
+    console.log("quack2");
+    console.log(allColors);
 
     return (
       <Container>
@@ -84,4 +98,4 @@ const mapStateToProps = (state) => ({
   isLoading: state.sb.isLoading,
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Colors);
+export default withTheme(connect(mapStateToProps, mapDispatchToProps)(Colors));
