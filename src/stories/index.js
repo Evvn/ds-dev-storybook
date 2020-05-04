@@ -12,13 +12,11 @@ import { SelectionControls } from "./selectionControls";
 import { Inputs } from "./inputs";
 import { InformationAndBanners } from "./informationAndBanners";
 import { Navigation } from "./navigation";
-import DemoForm from "../dsmComponents/Demo";
 
 storiesOf("Vault DSM Assets", module)
   .add("Colors", () => <Colors />)
   .add("Text Styles", () => <TextStyles />)
-  .add("Icons", () => <Icons />)
-  .add("Demo Form", () => <DemoForm />);
+  .add("Icons", () => <Icons />);
 
 Buttons();
 SelectionControls();

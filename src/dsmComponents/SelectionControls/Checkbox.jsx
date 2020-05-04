@@ -36,24 +36,24 @@ const StyledCheckbox = styled.div`
   transition: 200ms ease-in-out all;
 
   ${HiddenCheckbox}:focus:not(:disabled) + & {
-    border-color: ${props => props.theme.colorCayenneActive};
+    border-color: ${(props) => props.theme.colorCayenneActive};
   }
 
   ${HiddenCheckbox}:hover:not(:disabled) + & {
-    background-color: ${props => props.theme.colorPaprika5};
+    background-color: ${(props) => props.theme.colorPaprika5};
   }
 
   ${CheckIcon} {
-    visibility: ${props => (props.checked ? "visible" : "hidden")};
+    visibility: ${(props) => (props.checked ? "visible" : "hidden")};
   }
 `;
 
 class Checkbox extends React.Component {
   state = {
-    checked: false
+    checked: false,
   };
 
-  handleCheckboxChange = e => {
+  handleCheckboxChange = (e) => {
     const { disabled } = this.props;
     !disabled && this.setState({ checked: e.target.checked });
   };

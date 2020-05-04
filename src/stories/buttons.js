@@ -3,16 +3,10 @@ import { storiesOf } from "@storybook/react";
 import "../../src/App.scss";
 import styled from "styled-components";
 
-// DELETE THIS
-// import LinkButton from "../dsmComponents/Buttons/LinkButton";
-// import PrimaryButton from "../dsmComponents/Buttons/PrimaryButton";
-// import GhostButton from "../dsmComponents/Buttons/GhostButton";
-// import DeleteButton from "../dsmComponents/Buttons/DeleteButton";
-
-import LinkButton from "vault-dsm/dist/Buttons/LinkButton";
-import PrimaryButton from "vault-dsm/dist/Buttons/PrimaryButton";
-import GhostButton from "vault-dsm/dist/Buttons/GhostButton";
-import DeleteButton from "vault-dsm/dist/Buttons/DeleteButton";
+import LinkButton from "vault-ds/dist/Buttons/LinkButton";
+import PrimaryButton from "vault-ds/dist/Buttons/PrimaryButton";
+import GhostButton from "vault-ds/dist/Buttons/GhostButton";
+import DeleteButton from "vault-ds/dist/Buttons/DeleteButton";
 
 const Components = styled.div`
   & > * {

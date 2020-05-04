@@ -3,11 +3,11 @@ import { storiesOf } from "@storybook/react";
 import "../../src/App.scss";
 import styled from "styled-components";
 
-import InformationBox from "../dsmComponents/InformationBox/InformationBox";
-import Banner from "../dsmComponents/Banners/Banner";
-import Card from "../dsmComponents/Banners/Card";
-import Container from "../dsmComponents/Banners/Container";
-import Modal from "../dsmComponents/Banners/Modal";
+import InformationBox from "vault-ds/dist/InformationBox/InformationBox";
+import Banner from "vault-ds/dist/Banners/Banner";
+import Card from "vault-ds/dist/Banners/Card";
+import Container from "vault-ds/dist/Banners/Container";
+import Modal from "vault-ds/dist/Banners/Modal";
 
 const Components = styled.div`
   & > * {
@@ -22,29 +22,29 @@ export const InformationAndBanners = () => {
       () => (
         <Components>
           <InformationBox
-            type={"warning"}
+            boxType={"warning"}
             title={"Warning Information Box Title"}
             body={"This is the body copy for the information box."}
           />
           <InformationBox
-            type={"general"}
+            boxType={"general"}
             title={"General Information Box Title"}
             body={"This is the body copy for the information box."}
           />
           <InformationBox
-            type={"success"}
+            boxType={"success"}
             title={"Success Information Box Title"}
             body={"This is the body copy for the information box."}
           />
           <InformationBox
-            type={"alert"}
+            boxType={"alert"}
             title={"Alert Information Box Title"}
             body={"This is the body copy for the information box."}
           />
         </Components>
       ),
       {
-        "in-dsm": { id: "" }
+        "in-dsm": { id: "" },
       }
     )
     .add(
@@ -52,13 +52,13 @@ export const InformationAndBanners = () => {
       () => (
         <Components>
           <Banner
-            type={"warning"}
+            bannerType={"warning"}
             bannerBody={"This is a system warning message banner."}
             bannerLinkText={"More information."}
             bannerLinkUrl={"/"}
           />
           <Banner
-            type={"alert"}
+            bannerType={"alert"}
             bannerBody={"This is a system warning message banner."}
             bannerLinkText={"More information."}
             bannerLinkUrl={"/"}
@@ -66,7 +66,7 @@ export const InformationAndBanners = () => {
         </Components>
       ),
       {
-        "in-dsm": { id: "" }
+        "in-dsm": { id: "" },
       }
     )
     .add(
@@ -78,7 +78,7 @@ export const InformationAndBanners = () => {
         </Components>
       ),
       {
-        "in-dsm": { id: "" }
+        "in-dsm": { id: "" },
       }
     )
     .add(
@@ -89,7 +89,7 @@ export const InformationAndBanners = () => {
         </Components>
       ),
       {
-        "in-dsm": { id: "" }
+        "in-dsm": { id: "" },
       }
     )
     .add(
@@ -100,7 +100,7 @@ export const InformationAndBanners = () => {
         </Components>
       ),
       {
-        "in-dsm": { id: "" }
+        "in-dsm": { id: "" },
       }
     );
 };

@@ -3,13 +3,13 @@ import { storiesOf } from "@storybook/react";
 import "../../src/App.scss";
 import styled from "styled-components";
 
-import InputField from "../dsmComponents/Inputs/InputField";
-import SegmentControl from "../dsmComponents/Inputs/SegmentControl";
-import SingleSelect from "../dsmComponents/Inputs/SingleSelect";
-import MultiSelect from "../dsmComponents/Inputs/MultiSelect";
-import DateTimeInput from "../dsmComponents/Inputs/DateTimeInput";
-import DateInput from "../dsmComponents/Inputs/DateInput";
-import TimeInput from "../dsmComponents/Inputs/TimeInput";
+import InputField from "vault-ds/dist/Inputs/InputField";
+import SegmentControl from "vault-ds/dist/Inputs/SegmentControl";
+import SingleSelect from "vault-ds/dist/Inputs/SingleSelect";
+import MultiSelect from "vault-ds/dist/Inputs/MultiSelect";
+import DateTimeInput from "vault-ds/dist/Inputs/DateTimeInput";
+import DateInput from "vault-ds/dist/Inputs/DateInput";
+import TimeInput from "vault-ds/dist/Inputs/TimeInput";
 
 const Components = styled.div`
   & > * {
@@ -40,7 +40,7 @@ export const Inputs = () => {
         </Components>
       ),
       {
-        "in-dsm": { id: "5db91dfdd999932ba4e324b3" }
+        "in-dsm": { id: "5db91dfdd999932ba4e324b3" },
       }
     )
     .add(
@@ -58,7 +58,7 @@ export const Inputs = () => {
         </Components>
       ),
       {
-        "in-dsm": { id: "" }
+        "in-dsm": { id: "" },
       }
     )
     .add(
@@ -87,7 +87,7 @@ export const Inputs = () => {
         </Components>
       ),
       {
-        "in-dsm": { id: "5db91e7fd999937812e324d0" }
+        "in-dsm": { id: "5db91e7fd999937812e324d0" },
       }
     )
     .add(
@@ -101,7 +101,7 @@ export const Inputs = () => {
               "Two Seeds",
               "Tres Seeds",
               "Four And",
-              "Five Seeds"
+              "Five Seeds",
             ]}
             id={"ss1"}
             groupName={"firstGroup"}
@@ -113,7 +113,7 @@ export const Inputs = () => {
               "Two Seeds",
               "Tres Seeds",
               "Four And",
-              "Five Seeds"
+              "Five Seeds",
             ]}
             id={"ss3"}
             groupName={"thirdGroup"}
@@ -122,7 +122,7 @@ export const Inputs = () => {
         </Components>
       ),
       {
-        "in-dsm": { id: "5de4b37cac0a7d710e394a8b" }
+        "in-dsm": { id: "5de4b37cac0a7d710e394a8b" },
       }
     )
     .add(
@@ -153,7 +153,7 @@ export const Inputs = () => {
         </Components>
       ),
       {
-        "in-dsm": { id: "5e20f6ffa4a5311757b896d9" }
+        "in-dsm": { id: "5e20f6ffa4a5311757b896d9" },
       }
     );
 };

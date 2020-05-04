@@ -2,9 +2,8 @@ import React from "react";
 import { storiesOf } from "@storybook/react";
 import "../../src/App.scss";
 import styled from "styled-components";
-
-import RadioButton from "../dsmComponents/SelectionControls/RadioButton";
-import Checkbox from "../dsmComponents/SelectionControls/Checkbox";
+import RadioButton from "vault-ds/dist/SelectionControls/RadioButton";
+import Checkbox from "vault-ds/dist/SelectionControls/Checkbox";
 
 const Components = styled.div`
   & > * {
@@ -23,7 +22,7 @@ export const SelectionControls = () => {
         </Components>
       ),
       {
-        "in-dsm": { id: "5d6385f7722baa04785b3fbb" }
+        "in-dsm": { id: "5d6385f7722baa04785b3fbb" },
       }
     )
     .add(
@@ -35,7 +34,7 @@ export const SelectionControls = () => {
         </Components>
       ),
       {
-        "in-dsm": { id: "5d6383279a96eb6f77f7bc6b" }
+        "in-dsm": { id: "5d6383279a96eb6f77f7bc6b" },
       }
     );
 };

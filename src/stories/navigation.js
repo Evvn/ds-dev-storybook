@@ -3,9 +3,9 @@ import { storiesOf } from "@storybook/react";
 import "../../src/App.scss";
 import styled from "styled-components";
 
-import StepTracker from "../dsmComponents/Navigation/StepTracker";
-import Header from "../dsmComponents/Navigation/Header";
-import Pagination from "../dsmComponents/Navigation/Pagination";
+import StepTracker from "vault-ds/dist/Navigation/StepTracker";
+import Header from "vault-ds/dist/Navigation/Header";
+import Pagination from "vault-ds/dist/Navigation/Pagination";
 
 const Components = styled.div`
   & > * {
@@ -24,7 +24,7 @@ export const Navigation = () => {
         </Components>
       ),
       {
-        "in-dsm": { id: "" }
+        "in-dsm": { id: "" },
       }
     )
     .add(
@@ -36,7 +36,7 @@ export const Navigation = () => {
         </Components>
       ),
       {
-        "in-dsm": { id: "" }
+        "in-dsm": { id: "" },
       }
     )
     .add(
@@ -49,7 +49,7 @@ export const Navigation = () => {
         </Components>
       ),
       {
-        "in-dsm": { id: "" }
+        "in-dsm": { id: "" },
       }
     );
 };
