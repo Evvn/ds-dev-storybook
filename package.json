@@ -68,7 +68,7 @@
     "terser-webpack-plugin": "1.2.3",
     "ts-pnp": "1.1.2",
     "url-loader": "1.1.2",
-    "vault-ds": "^0.1.1",
+    "vault-ds": "^0.1.996",
     "webpack": "^4.42.1",
     "webpack-manifest-plugin": "2.0.4",
     "workbox-webpack-plugin": "4.2.0"

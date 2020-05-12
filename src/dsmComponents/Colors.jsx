@@ -45,20 +45,18 @@ class Colors extends React.Component {
   }
 
   render() {
-    const { isLoading, dsmRes, theme } = this.props;
+    const { isLoading, dsmRes } = this.props;
 
-    let allColors = [];
-    console.log("quack");
-    console.log(
-      Object.keys(theme).forEach((themePropKey) => {
-        let colorObj = {};
-        colorObj[themePropKey] = theme[themePropKey];
-        themePropKey.slice(0, 5) === "color" && allColors.push(colorObj);
-      })
-    );
+    // let allColors = [];
+    // console.log(
+    //   Object.keys(theme).forEach((themePropKey) => {
+    //     let colorObj = {};
+    //     colorObj[themePropKey] = theme[themePropKey];
+    //     themePropKey.slice(0, 5) === "color" && allColors.push(colorObj);
+    //   })
+    // );
 
-    console.log("quack2");
-    console.log(allColors);
+    // console.log(allColors);
 
     return (
       <Container>
